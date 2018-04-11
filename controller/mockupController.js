@@ -21,34 +21,51 @@ exports.listEndpoints = function(req, res) {
 
 exports.createEndpoint = function(req, res) {
   try {
-    console.log('Creating endpoint');
-    var body = req.body;
-    if (body.endpoint && body.response) {
-      petitions.set(body.endpoint, body.response);
-      var toStore = util.inspect(JSON.stringify(body)).replace('\'','');
-      toStore = toStore.substring(0, toStore.length - 1);
-      fs.appendFileSync('./httpPetitions.json', toStore + '\n' , 'utf-8');
-      res.send('Petition created on endpoint ' + body.endpoint);
-      console.log('Petition created, endpoint is: ' + body.endpoint);
-      console.log('Response will be: ');
-      console.log(body.response);
+    var endpointName;
+    var endpointRes;
+    if (req.params.endpointName) {
+      petitions.set(req.params.endpointName, req.body);
+      var savedPetition = {};
+      savedPetition.endpoint = req.params.endpointName;
+      endpointName = req.params.endpointName;
+      savedPetition.response = req.body;
+      endpointRes = req.body;
+      var toStore = util.inspect(JSON.stringify(savedPetition)).replace('\'','');
     }else{
-      console.log('ERROR: Not valid json, 2 fields needed, endpoint and response');
-      res.send('ERROR: Not valid json, 2 fields needed, endpoint and response');
+      var body = req.body;
+      if (body.endpoint && body.response) {
+        petitions.set(body.endpoint, body.response);
+        endpointName = body.endpoint;
+        endpointRes = body.response;
+        var toStore = util.inspect(JSON.stringify(body)).replace('\'','');
+      }else{
+        res.status(403);
+        console.log('ERROR: Not valid json, 2 fields needed, endpoint and response');
+        res.send('ERROR: Not valid json, 2 fields needed, endpoint and response');
+      }
     }
+    toStore = toStore.substring(0, toStore.length - 1);
+    fs.appendFileSync('./httpPetitions.json', toStore + '\n' , 'utf-8');
+    res.send('Petition created on endpoint ' + endpointName);
+    console.log('Petition created, endpoint is: ' + endpointName);
+    console.log('Response will be: ');
+    console.log(endpointRes);
   } catch (e) {
     console.log(e);
+    res.status(500);
     res.send(e);
   }
 };
 
 exports.dynamicAPI = function(req, res) {
     try {
-      var body = res.json(petitions.get(req.params.petitionName));
+      var body = petitions.get(req.params.endpointName);
       if (body)
         res.json(body);
-      else
+      else{
+        res.status(404);
         res.json('"Error":"Endpoint not created"');
+      }
     } catch (e) {
       res.send(e);
     }

@@ -32,7 +32,27 @@ A simple and light mockup server designed to emulate responses from http petitio
 }
 ```
 
-2. Send a post petition to http://localhost:3001/createEndpoint with the specified json as bodyParser
+2. Send a post petition to http://localhost:3001/createEndpoint with the specified json as body
+
+2. (Alternative) Send a post petition to http://localhost:3001/createEndpoint/ENDPOINTNAME with the desired response in the body
+```json
+{
+  	"TEST": [
+        {
+            "firstName": "John",
+            "lastName": "Doe"
+        },
+        {
+            "firstName": "Anna",
+            "lastName": "Smith"
+        },
+        {
+            "firstName": "Peter",
+            "lastName": "Jones"
+        }
+    ]
+}
+```
 
 ### Access created endpoints
 1. To list all the petitions endpoints: http://localhost:3001/listEndpoints

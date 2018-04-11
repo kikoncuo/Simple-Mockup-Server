@@ -8,19 +8,22 @@ module.exports = function(app) {
   app.route('/listEndpoints')
     .get(mockupController.listEndpoints);
 
-  app.route('/customEndpoints/:petitionName/:parameter')
+  app.route('/customEndpoints/:endpointName/:parameter')
     .get(mockupController.dynamicAPI)
     .post(mockupController.dynamicAPI)
     .put(mockupController.dynamicAPI)
     .delete(mockupController.dynamicAPI);
 
-  app.route('/customEndpoints/:petitionName')
+  app.route('/customEndpoints/:endpointName')
     .get(mockupController.dynamicAPI)
     .post(mockupController.dynamicAPI)
     .put(mockupController.dynamicAPI)
     .delete(mockupController.dynamicAPI);
 
-  app.route('/createEndpoint')
+  app.route('/createEndpoint/:endpointName')
+    .post(mockupController.createEndpoint);
+
+  app.route('/createEndpoint/')
     .post(mockupController.createEndpoint);
 
   // app.route('/Accounts/:accountId') //Endpoint example with variable
