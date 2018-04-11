@@ -1,5 +1,5 @@
 # Simple Mockup Server
-A simple and light mockup server designed to emulate responses from http petitions and test communication.
+A simple and light mockup server designed to emulate responses from http requests and test communication.
 
 ### Installation and execution
 
@@ -7,7 +7,7 @@ A simple and light mockup server designed to emulate responses from http petitio
 2. Execute with : `simple-mockup-server` (Port can be specified with PORT parameter, by default uses 3001)  `PORT=portN simple-mockup-server`
 
 
-### Set simple petitions
+### Set simple requests
 
 1. Create json file specifying the endpoint and the desired response response
 ```json
@@ -55,13 +55,13 @@ A simple and light mockup server designed to emulate responses from http petitio
 ```
 
 ### Access created endpoints
-1. To list all the petitions endpoints: http://localhost:3001/listEndpoints
+1. To list all the requests endpoints: http://localhost:3001/listEndpoints
 2. Execute any petition type to http://localhost:3001/customEndpoints/ENDPOINTNAME to get the specified response
 
-### Alternative way to set and edit simple petitions
+### Alternative way to set and edit simple requests
 
 1. Open file httpPetitions.json
-2. Edit/add/delete any petitions (All petitions must be in one line with the same structure as before)
+2. Edit/add/delete any requests (All requests must be in one line with the same structure as before)
 
 
 ### Instructions to add functions with logic to the default configuration
