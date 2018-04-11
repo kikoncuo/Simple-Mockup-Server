@@ -1,5 +1,5 @@
 # Simple Mockup Server
-A simple and light mockup server designed to emulate responses from http petitions and test communication. 
+A simple and light mockup server designed to emulate responses from http petitions and test communication.
 
 ### Installation and execution
 
@@ -10,7 +10,8 @@ A simple and light mockup server designed to emulate responses from http petitio
 ### Set simple petitions
 
 1. Create json file specifying the endpoint and the desired response response
-`{
+```json
+{
 	"endpoint": "NewTestEndpoint",
 	"response" : {
     	"TEST": [
@@ -28,7 +29,8 @@ A simple and light mockup server designed to emulate responses from http petitio
 	        }
 	    ]
 	}
-}`
+}
+```
 
 2. Send a post petition to http://localhost:3001/createEndpoint with the specified json as bodyParser
 
