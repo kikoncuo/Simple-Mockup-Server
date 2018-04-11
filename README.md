@@ -4,7 +4,7 @@ A simple and light mockup server designed to emulate responses from http petitio
 ### Installation and execution
 
 1. Install with : `npm install -g simple-mockup-server`
-2. Execute with : `simple-mockup-server` (Port can be specified with PORT parameter, by default uses 3001)
+2. Execute with : `simple-mockup-server` (Port can be specified with PORT parameter, by default uses 3001)  `PORT=portN simple-mockup-server`
 
 
 ### Set simple petitions
