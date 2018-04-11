@@ -1,0 +1,17 @@
+{
+  "name": "simple-mockup-server",
+  "version": "1.0.0",
+  "description": "",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node main.js"
+  },
+  "author": "Enrique Alcázar Garzás",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.15.3",
+    "request": "^2.81.0",
+    "body-parser": "^1.17.2"
+  }
+}
